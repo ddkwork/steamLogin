@@ -1,7 +1,7 @@
 package server
 
 import (
-	"steamBackend/server/controllers"
+	"github.com/ZMuSiShui/steamLogin/server/controllers"
 
 	"github.com/gin-gonic/gin"
 	log "github.com/sirupsen/logrus"

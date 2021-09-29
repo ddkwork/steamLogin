@@ -1,7 +1,7 @@
 package bootstrap
 
 import (
-	"steamBackend/conf"
+	"github.com/ZMuSiShui/steamLogin/conf"
 
 	"github.com/gin-gonic/gin"
 	log "github.com/sirupsen/logrus"

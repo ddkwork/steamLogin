@@ -1,4 +1,4 @@
-module steamBackend
+module github.com/ZMuSiShui/steamLogin
 
 go 1.16
 

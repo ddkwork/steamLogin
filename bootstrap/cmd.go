@@ -4,8 +4,8 @@ import (
 	"flag"
 	"fmt"
 
-	"steamBackend/conf"
-	serv "steamBackend/server"
+	"github.com/ZMuSiShui/steamLogin/conf"
+	serv "github.com/ZMuSiShui/steamLogin/server"
 
 	"github.com/gin-gonic/gin"
 	log "github.com/sirupsen/logrus"
@@ -14,9 +14,9 @@ import (
 func init() {
 	flag.BoolVar(&conf.Debug, "debug", false, "use debug mode")
 	flag.BoolVar(&conf.Help, "help", false, "show usage help")
-	flag.BoolVar(&conf.Version, "version", false, "show version info")
+	flag.BoolVar(&conf.Version, "version", true, "show version info")
 	flag.StringVar(&conf.ConfigFile, "conf", "conf.yml", "config file")
-	flag.BoolVar(&conf.SkipUpdate, "skip-update", true, "skip update")
+	flag.BoolVar(&conf.SkipUpdate, "skip-update", false, "skip update")
 }
 
 // bootstrap run

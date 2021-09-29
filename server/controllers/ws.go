@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"steamBackend/conf"
-	"steamBackend/steam"
+	"github.com/ZMuSiShui/steamLogin/conf"
+	"github.com/ZMuSiShui/steamLogin/steam"
 
 	"github.com/gin-gonic/gin"
 	"github.com/gorilla/websocket"

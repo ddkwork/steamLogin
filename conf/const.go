@@ -19,5 +19,5 @@ var (
 var Conf = new(Config)
 
 const (
-	VERSION = "v1.0"
+	VERSION = "v0.1"
 )

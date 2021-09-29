@@ -4,8 +4,9 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"net/http"
-	"steamBackend/conf"
-	"steamBackend/utils"
+
+	"github.com/ZMuSiShui/steamLogin/conf"
+	"github.com/ZMuSiShui/steamLogin/utils"
 
 	log "github.com/sirupsen/logrus"
 )
@@ -20,7 +21,7 @@ type GithubRelease struct {
 // check update
 func CheckUpdate() {
 	log.Infof("检查更新...")
-	url := "https://api.github.com/repos/Xhofe/alist/releases/latest"
+	url := "https://api.github.com/repos/ZMuSiShui/steamLogin/releases/latest"
 	resp, err := http.Get(url)
 	if err != nil {
 		log.Warnf("检查更新失败:%s", err.Error())

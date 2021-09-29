@@ -2,9 +2,10 @@ package bootstrap
 
 import (
 	"io/ioutil"
-	"steamBackend/conf"
-	"steamBackend/utils"
 	"strings"
+
+	"github.com/ZMuSiShui/steamLogin/conf"
+	"github.com/ZMuSiShui/steamLogin/utils"
 
 	log "github.com/sirupsen/logrus"
 	"gopkg.in/yaml.v3"
@@ -47,7 +48,7 @@ func Write(path string) bool {
 	}()
 	str := `
 server:
-  name: "SteamBackend"
+  name: "github.com/ZMuSiShui/steamLogin"
   server_name: "俄罗斯圣彼得堡"
   address: "0.0.0.0"
   port: "5244"

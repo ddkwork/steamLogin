@@ -1,6 +1,6 @@
 package main
 
-import "steamBackend/bootstrap"
+import "github.com/ZMuSiShui/steamLogin/bootstrap"
 
 // main function
 func main() {

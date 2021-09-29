@@ -1,9 +1,9 @@
 package server
 
 import (
-	"steamBackend/conf"
-	"steamBackend/server/controllers"
-	"steamBackend/utils"
+	"github.com/ZMuSiShui/steamLogin/conf"
+	"github.com/ZMuSiShui/steamLogin/server/controllers"
+	"github.com/ZMuSiShui/steamLogin/utils"
 
 	"github.com/gin-gonic/gin"
 )
