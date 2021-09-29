@@ -49,7 +49,7 @@ func Write(path string) bool {
 	str := `
 server:
   name: "github.com/ZMuSiShui/steamLogin"
-  server_name: "俄罗斯圣彼得堡"
+  server_name: "中国"
   address: "0.0.0.0"
   port: "5244"
   site_url: "*"
