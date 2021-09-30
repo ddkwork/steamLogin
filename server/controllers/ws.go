@@ -69,16 +69,29 @@ func Ws(context *gin.Context) {
 				break
 			}
 		case "logOn":
-			log.Infof("%+v", msg.Data)
-			userinfo := steam.SteamLogOn(msg.Data)
-			if userinfo.Error {
-				resMsg := gin.H{
-					"action": "authCode",
-				}
-				err = ws.WriteJSON(resMsg)
-				if err != nil {
-					log.Errorf("发送WebSocket消息失败: ", err.Error())
-					break
+			// log.Infof("%+v", msg.Data)
+			userinfo, errmsg := steam.SteamLogOn(msg.Data)
+			if errmsg.Status {
+				if errmsg.Message == "EResult_InvalidLoginAuthCode" || errmsg.Message == "EResult_AccountLogonDenied" {
+					resMsg := gin.H{
+						"action": "authCode",
+					}
+					err = ws.WriteJSON(resMsg)
+					if err != nil {
+						log.Errorf("发送WebSocket消息失败: ", err.Error())
+						break
+					}
+				} else {
+					resMsg := gin.H{
+						"action":  "logOn",
+						"result":  "failed",
+						"message": errmsg.Message,
+					}
+					err = ws.WriteJSON(resMsg)
+					if err != nil {
+						log.Errorf("发送WebSocket消息失败: ", err.Error())
+						break
+					}
 				}
 			} else {
 				resMsg := gin.H{

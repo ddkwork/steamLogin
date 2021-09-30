@@ -12,19 +12,31 @@ type SteamLogOnDetails struct {
 	TwoFactorCode string
 }
 
-type resInfo struct {
-	Name    string `json:"name"`
-	Country string `json:"country"`
-	Error   bool   `json:"error"`
+type ErrMsg struct {
+	Status  bool   `json:"status"`
+	Message string `json:"message"`
 }
 
-func SteamLogOn(sld *SteamLogOnDetails) (userinfo resInfo) {
+type UserInfo struct {
+	Name    string `json:"name"`
+	Country string `json:"country"`
+}
+
+func SteamLogOn(sld *SteamLogOnDetails) (userinfo UserInfo, err ErrMsg) {
 	myLoginInfo := new(steam.LogOnDetails)
 	if sld.Username != "" {
 		myLoginInfo.Username = sld.Username
+	} else {
+		err.Status = true
+		err.Message = "用户名不能为空"
+		return
 	}
 	if sld.Password != "" {
 		myLoginInfo.Password = sld.Password
+	} else {
+		err.Status = true
+		err.Message = "密码不能为空"
+		return
 	}
 	if sld.AuthCode != "" {
 		myLoginInfo.AuthCode = sld.AuthCode
@@ -46,15 +58,15 @@ func SteamLogOn(sld *SteamLogOnDetails) (userinfo resInfo) {
 		case *steam.AccountInfoEvent:
 			userinfo.Name = e.PersonaName
 			userinfo.Country = e.Country
-			userinfo.Error = false
+			err.Status = false
 			client.Disconnect()
 			goto END
 
 		case *steam.LogOnFailedEvent:
 			// TODO 判断失败类型
-			userinfo.Name = "error"
-			userinfo.Country = "error"
-			userinfo.Error = true
+			log.Infof(e.Result.String())
+			err.Status = true
+			err.Message = e.Result.String()
 			goto END
 		}
 	}
